@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect &amp; Care | Give Hope. Share Care.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--p:#164525;--p2:#2f5d3a;--ink:#121e16;--mut:#414941;--soft:#506446;--bg:#e8f8ea;--bg2:#e3f2e4;--acc:#d0e7c0;--peach:#faddcc;--brown:#4b382c;--line:#ddecdf}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.5}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:700;color:var(--ink)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.sec{padding:40px 0}
+.eyebrow{display:block;text-align:center;font-size:11px;font-weight:600;letter-spacing:.55px;text-transform:uppercase;color:var(--p)}
+.sh{text-align:center;max-width:672px;margin:0 auto 24px}
+.sh h2{font-size:32px;letter-spacing:-.8px;line-height:42px;margin:4px 0}
+.sh p{font-size:15px;color:var(--mut)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;padding:12px 20px;font-size:12px;font-weight:600;letter-spacing:.24px;border:0;cursor:pointer;transition:opacity .2s}
+.btn:hover{opacity:.9}
+.dark{background:var(--p);color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.light{background:#fff;color:var(--p);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.card{background:#fff;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.ic{width:48px;height:48px;border-radius:12px;background:var(--acc);display:grid;place-items:center;color:var(--p)}
+.ic svg,.mini svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tag{display:inline-block;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600;letter-spacing:.44px}
+.meta{font-size:11px;font-weight:600;color:var(--soft);letter-spacing:.44px}
+.mini{display:inline-flex;align-items:center;gap:6px;color:var(--soft);font-size:12px}
+.mini svg{width:14px;height:14px}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(24px);box-shadow:0 1px 8px rgba(36,61,43,.06)}
+.hdr .wrap{height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:8px}
+.brand img{width:32px;height:32px;object-fit:contain}
+.brand b{display:block;font-family:'Plus Jakarta Sans',sans-serif;color:var(--p);font-size:18px;letter-spacing:-.45px;line-height:1.2}
+.brand small{font-size:11px;font-weight:600;color:var(--soft);letter-spacing:.44px}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav a{font-size:14px;font-weight:600;color:var(--mut);padding:4px 8px;border-radius:8px}
+.nav a.on{background:var(--acc);color:#54684a;font-size:16px}
+.hright{display:flex;align-items:center;gap:16px}
+.hright .signin{font-size:14px;font-weight:600;color:var(--p)}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--p);display:grid;place-items:center;color:#fff}
+.avatar svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2}
+
+/* hero */
+.hero{background:rgba(232,248,234,.6);padding:24px 0 40px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:600;letter-spacing:.55px;color:#164525;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.pill i{width:10px;height:10px;border-radius:50%;background:var(--p2)}
+.hero h1{font-size:40px;letter-spacing:-1px;line-height:50px;margin:16px 0}
+.lead{font-size:17px;color:var(--mut);line-height:28px;max-width:576px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}
+.btns .btn{padding:14px 28px;font-size:14px}
+.btns .light{padding:14px 24px}
+.tiny{font-size:13px;color:var(--soft);margin-bottom:24px}
+.searchbar{background:#fff;border-radius:12px;padding:12px;display:flex;gap:8px;align-items:center;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);flex-wrap:wrap}
+.searchbar .field{flex:1;min-width:180px;background:var(--bg);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:#717970}
+.searchbar .field.sel{flex:0 0 auto;color:var(--ink);font-weight:500;font-size:12px}
+.searchbar .btn{padding:12px 20px}
+.photo{position:relative;border-radius:16px;overflow:visible;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+.photo .img{height:447px;border-radius:16px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo::after{content:"";position:absolute;inset:0;border-radius:16px;background:linear-gradient(to top,rgba(22,69,37,.4),rgba(22,69,37,0) 50%)}
+.badge{position:absolute;z-index:2;background:#fff;border-radius:12px;padding:12px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.badge .bi{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:0 0 36px}
+.badge b{display:block;font-size:12px;letter-spacing:.24px}
+.badge small{display:block;font-size:11px;color:var(--mut)}
+.b1{top:-12px;right:24px}.b1 .bi{background:var(--peach);color:var(--brown)}
+.b2{bottom:-16px;left:-16px;padding:14px;max-width:320px}.b2 .bi{width:40px;height:40px;flex-basis:40px;background:var(--acc);color:var(--p)}
+.b2 small{color:var(--soft);font-weight:600;letter-spacing:.44px}
+.bi svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* trust */
+.trust{background:var(--bg2)}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feat .card{padding:24px;display:flex;flex-direction:column;gap:8px}
+.feat h3{font-size:16px;margin-top:4px}
+.feat p{font-size:13px;color:var(--mut)}
+
+/* discovery */
+.disc .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px}
+.disc .head .sh{text-align:left;margin:0}
+.disc .head h2{font-size:32px;letter-spacing:-.8px;line-height:42px;margin:4px 0}
+.disc .head p{font-size:15px;color:var(--mut);max-width:620px}
+.filters{background:var(--bg);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pills span{background:#fff;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--mut);box-shadow:0 1px 1px rgba(0,0,0,.05);cursor:pointer}
+.pills span.on{background:var(--p);color:#fff;font-weight:500}
+.qf{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.qf b{font-size:11px;letter-spacing:.44px}
+.qf span{background:#fff;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--mut);letter-spacing:.44px}
+.qf span.on{color:var(--p)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ocard{background:var(--bg2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.ocard .top{padding:24px 24px 0;display:flex;flex-direction:column;gap:8px}
+.ocard .row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.loc{display:inline-flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--soft);letter-spacing:.44px;max-width:230px}
+.ver{background:var(--p);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;font-weight:700;white-space:nowrap}
+.ocard h3{font-size:18px;line-height:26px}
+.ocard .kids{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut)}
+.ocard .kids svg{width:16px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
+.reqs{background:#fff;border-radius:12px;padding:14px;margin:16px 24px 0;display:flex;flex-direction:column;gap:8px}
+.reqs h5{font-size:11px;letter-spacing:.44px;text-transform:uppercase;color:var(--brown);font-weight:600}
+.reqs ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.reqs li{font-size:13px;color:var(--ink);display:flex;gap:8px;align-items:center}
+.reqs li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--p);flex:0 0 6px}
+.upi{margin:16px 24px 0;background:var(--bg);border-radius:8px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.upi code{font-family:'Liberation Mono',Consolas,monospace;font-weight:700;font-size:11px;color:var(--ink);display:flex;gap:8px;align-items:center}
+.upi code svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.upi button{background:none;border:0;color:var(--p);font-weight:700;font-size:11px;cursor:pointer}
+.ocard .acts{display:flex;gap:4px;padding:24px;margin-top:auto}
+.ocard .acts .btn{flex:1;padding:10px}
+.ocard .acts .light{flex:0 0 auto;padding:10px 16px}
+.ocard .spacer{height:8px}
+
+/* needs */
+.needs{background:var(--bg)}
+.needs .intro{text-align:left;margin:0 0 24px;max-width:672px}
+.needs .intro h2{font-size:32px;letter-spacing:-.8px;line-height:42px;margin:4px 0}
+.needs .intro p{font-size:15px;color:var(--mut)}
+.ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ncard{background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.ncard .hd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ncard .hd span{font-size:11px;font-weight:600;color:var(--mut);letter-spacing:.44px;text-align:right}
+.ncard h3{font-size:18px;line-height:26px}
+.ncard p{font-size:13px;color:var(--mut);line-height:20px}
+.prog{display:flex;flex-direction:column;gap:6px;padding-top:8px}
+.prog .pl{display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.44px}
+.prog .pl b{color:var(--p);font-weight:700}
+.bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--p);border-radius:999px}
+.prog small{font-size:12px;color:var(--soft);font-weight:500}
+.ncard .btn{width:100%;padding:10px}
+
+/* ways */
+.ways{background:var(--bg2)}
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.way{background:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.way h3{font-size:16px;margin-top:8px}
+.way p{font-size:13px;color:var(--mut);line-height:20px}
+.way .foot{margin-top:auto}
+.tiers{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.tiers b{font-size:11px;color:var(--p);background:var(--bg);padding:4px 10px;border-radius:6px}
+.tiers small{font-size:11px;font-weight:600;color:var(--ink);letter-spacing:.44px;width:100%}
+.lnk{font-size:12px;font-weight:600;color:var(--p);display:inline-flex;gap:4px;align-items:center}
+.lnk svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.2}
+
+/* how */
+.how .sh{margin-bottom:40px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{background:var(--bg);border-radius:16px;padding:32px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative}
+.step .n{width:56px;height:56px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:20px;margin-bottom:8px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1)}
+.step h3{font-size:18px;line-height:26px}
+.step p{font-size:13px;color:var(--mut);line-height:20px;max-width:340px}
+.callout{background:var(--bg2);border-radius:16px;padding:32px;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:24px;box-shadow:0 1px 1px rgba(0,0,0,.05);flex-wrap:wrap}
+.callout .l{display:flex;gap:16px;align-items:center}
+.callout .ci{width:48px;height:48px;border-radius:50%;background:var(--acc);display:grid;place-items:center;color:var(--p);flex:0 0 48px}
+.callout .ci svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.callout h4{font-size:18px;line-height:26px}
+.callout p{font-size:13px;color:var(--mut)}
+
+/* faq */
+.faq{background:var(--bg)}
+.faq .wrapn{max-width:896px;margin:0 auto;padding:0 32px}
+.faq .sh{margin-bottom:24px}
+.faq details{background:#fff;border-radius:12px;padding:20px;margin-bottom:8px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg);flex:0 0 8px;margin-right:4px;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq details p{margin-top:12px;font-size:14px;color:var(--mut);line-height:22px}
+
+/* cta */
+.cta{padding:24px 64px}
+.ctabox{background:var(--p);border-radius:24px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:32px;max-width:1152px;margin:0 auto;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);flex-wrap:wrap}
+.ctabox h2{color:#fff;font-size:32px;letter-spacing:-.8px;line-height:42px;max-width:576px}
+.ctabox p{color:#a0d3a7;font-size:15px;line-height:24px;margin-top:4px}
+.ctabox .btns{margin:0}
+.ctabox .btn{padding:14px 28px;font-size:14px}
+.ctabox .ghost{border:2px solid rgba(255,255,255,.6);background:transparent;color:#fff}
+
+/* footer */
+footer{background:var(--bg);box-shadow:0 -4px 8px rgba(36,61,43,.03);padding:40px 0 24px}
+.fgrid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1.2fr;gap:24px}
+footer h4{font-size:16px;color:var(--p);font-weight:600;margin-bottom:16px}
+footer .brand{margin-bottom:12px}
+footer .desc{font-size:13px;color:var(--mut);line-height:21px;margin-bottom:16px}
+footer .ct{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mut)}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--mut)}
+.form{display:flex;flex-direction:column;gap:8px}
+.form p.sub{font-size:13px;color:var(--mut);line-height:21px;margin-bottom:6px}
+.form input{width:100%;background:#fff;border:0;border-radius:8px;padding:10px 14px;font:inherit;font-size:13px;color:var(--ink);box-shadow:0 1px 4px rgba(36,61,43,.04);outline:none}
+.form input:focus{box-shadow:0 0 0 2px var(--p2)}
+.form button{background:var(--p);color:#fff;border:0;border-radius:8px;padding:10px 16px;font:inherit;font-size:12px;font-weight:500;cursor:pointer;margin-top:4px}
+.form button:disabled{opacity:.6;cursor:default}
+.msg{font-size:12px;font-weight:600;min-height:16px}
+.msg.ok{color:var(--p)}.msg.err{color:#a0382b}
+.fine{font-size:11px;font-weight:600;color:var(--mut);letter-spacing:.44px;margin-top:2px}
+.fbot{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--line);margin-top:32px;padding-top:24px;flex-wrap:wrap}
+.fbot p{font-size:13px;color:var(--mut)}
+.fbot p+p{font-size:11px;font-weight:600;color:var(--soft);letter-spacing:.44px;margin-top:4px}
+.fbot nav{display:flex;gap:16px;font-size:12px;font-weight:500;color:var(--mut)}
+
+@media (max-width:1100px){
+  .nav{display:none}
+  .cards,.ncards{grid-template-columns:repeat(2,1fr)}
+  .wgrid,.feat{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .grid2,.steps{grid-template-columns:1fr}
+  .hero h1{font-size:32px;line-height:40px}
+  .photo .img{height:320px}
+  .b2{left:8px}
+  .disc .head{flex-direction:column;align-items:flex-start}
+  .sh h2,.disc .head h2,.needs .intro h2{font-size:26px;line-height:34px}
+  .ctabox{padding:32px}
+  .cta{padding:24px 16px}
+}
+@media (max-width:600px){
+  .wrap,.faq .wrapn{padding:0 16px}
+  .cards,.ncards,.wgrid,.feat,.fgrid{grid-template-columns:1fr}
+  .hdr .wrap{height:auto;padding:12px 16px;flex-wrap:wrap}
+  .hright .signin{display:none}
+  .b1{right:8px}
+  .callout{padding:24px}
+}
+
+/* sign-in dialog */
+.modal{position:fixed;inset:0;background:rgba(18,30,22,.45);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
+.modal.open{display:flex}
+.mbox{background:#fff;border-radius:20px;box-shadow:0 20px 40px -8px rgba(0,0,0,.2);width:100%;max-width:440px;padding:36px 32px;position:relative;max-height:92vh;overflow:auto}
+.mclose{position:absolute;right:14px;top:12px;background:none;border:0;font-size:24px;color:var(--mut);cursor:pointer;line-height:1}
+.mbrand{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:20px}
+.mbrand b{font-family:'Plus Jakarta Sans',sans-serif;color:var(--p);font-size:20px;letter-spacing:-.4px}
+.mbox h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;letter-spacing:-.6px;text-align:center}
+.msub{font-size:14px;color:var(--mut);text-align:center;margin:6px 0 22px}
+.tabs{display:flex;background:var(--bg);border-radius:10px;padding:4px;margin-bottom:22px}
+.tabs button{flex:1;border:0;background:none;padding:10px;border-radius:8px;font:inherit;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer}
+.tabs button.on{background:#fff;color:var(--p);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.af{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.af.hide{display:none}
+.af label{font-size:13px;font-weight:600}
+.ai{width:100%;border:1.5px solid #c9dcca;border-radius:10px;padding:11px 14px;font:inherit;font-size:14px;color:var(--ink);background:#fff;outline:none}
+.ai:focus{border-color:var(--p2);box-shadow:0 0 0 3px rgba(47,93,58,.15)}
+.ai.bad{border-color:#a0382b}
+.apw{position:relative}
+.apw .ai{padding-right:64px}
+.apw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--p);font-weight:600;font-size:12px;cursor:pointer;padding:6px}
+.abtn{width:100%;background:var(--p);color:#fff;border:0;border-radius:10px;padding:13px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:6px}
+.abtn:disabled{opacity:.6;cursor:default}
+.amsg{font-size:13px;font-weight:600;min-height:20px;margin-top:12px;text-align:center}
+.amsg.err{color:#a0382b}.amsg.ok{color:var(--p)}
+.anote{margin-top:16px;background:var(--bg);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--soft)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l3 3 5-6"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M3 12h4l3-3 4 2 4-3"/><path d="M7 16l3 2c1 .6 2.4.5 3.3-.3L19 14"/><path d="M14 6a2 2 0 0 1 3 2c0 2-3 4-3 4s-3-2-3-4a2 2 0 0 1 3-2z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M16 12.5h.01M3 10h18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.6c1.6.9 2.5 2.6 2.9 5.4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-label="Connect &amp; Care logo"><circle cx="16" cy="16" r="16" fill="#d0e7c0"/><path d="M16 24c-6 0-9-5-9-9 4 0 8 2 9 6 1-4 5-6 9-6 0 4-3 9-9 9z" fill="#164525"/></svg>
+      <div><b>Connect &amp; Care</b><small>Give Hope. Share Care.</small></div>
+    </a>
+    <nav class="nav">
+      <a class="on" href="#">Home</a>
+      <a href="#discover">Find Orphanages</a>
+      <a href="#needs">Explore Needs</a>
+      <a href="#how">How It Works</a>
+      <a href="#how">About Us</a>
+      <a href="#faq">FAQs</a>
+    </nav>
+    <div class="hright">
+      <a class="signin" id="signin" href="#login">Sign In</a>
+      <a class="btn dark" href="#ways"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg>Donate Now</a>
+      <span class="avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap grid2">
+    <div>
+      <span class="pill"><i></i>EVERY LITTLE ACT MATTERS</span>
+      <h1>A little kindness can change a whole future.</h1>
+      <p class="lead">Every child deserves a safe place to grow, learn, and dream. Discover orphanages near you, understand their real-time needs, and offer meaningful support in the way that feels right for you.</p>
+      <div class="btns">
+        <a class="btn dark" href="#discover"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Find an Orphanage</a>
+        <a class="btn light" href="#needs">&#9745; Explore Their Needs</a>
+      </div>
+      <p class="tiny">🌱 Your time, your skills, your support — every contribution counts directly.</p>
+      <div class="searchbar">
+        <div class="field">📍 <span>Enter district or city (e.g. Pune, Jaipur)...</span></div>
+        <div class="field sel">All Support Types</div>
+        <a class="btn dark" href="#discover">Find Homes &rarr;</a>
+      </div>
+    </div>
+    <div class="photo">
+      <div class="img" role="img" aria-label="Children and a volunteer learning together at a library table" style="background:linear-gradient(135deg,#2f5d3a 0%,#164525 55%,#d0e7c0 100%);display:grid;place-items:center;color:#e8f8ea;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;text-align:center;padding:24px"><span>Add your hero photo here</span></div>
+      <div class="badge b1"><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5-7 10-7 10z"/></svg></span><div><b>Every act counts</b><small>Verified children's library session</small></div></div>
+      <div class="badge b2"><span class="bi"><svg viewBox="0 0 24 24"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14zM5 19l7-7"/></svg></span><div><b>100% Direct UPI</b><small>Zero intermediary or gateway deductions</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST & PLATFORM HIGHLIGHTS -->
+<section class="sec trust">
+  <div class="wrap">
+    <div class="sh"><span class="eyebrow">Transparent &amp; Community-Driven</span><h2>Making Every Act of Kindness Count</h2><p>A direct bridge between generous citizens and authentic childcare homes across Indian districts.</p></div>
+    <div class="feat">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Discover Nearby Homes</h3><p>Find participating orphanages across districts and local communities with verified contact and location data.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><h3>Understand Real Needs</h3><p>Explore current verified requests for wholesome food, textbook kits, seasonal clothing, and daily essentials.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-hand"/></svg></span><h3>Give Your Way</h3><p>Contribute monetary funds directly, deliver tangible goods, offer specialized professional skills, or volunteer on weekends.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span><h3>Give With Confidence</h3><p>Look for government-registered Trust/Society badges, transparent audits, and direct home-specific UPI payment addresses.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORPHANAGE DISCOVERY -->
+<section class="sec disc" id="discover">
+  <div class="wrap">
+    <div class="head">
+      <div class="sh">
+        <span class="eyebrow" style="text-align:left">Verified Homes in Your Community</span>
+        <h2>Discover Registered Orphanages &amp; Child Care Homes</h2>
+        <p>Explore verified homes in need of support. Filter by location, urgent requirements, or ways to get involved.</p>
+      </div>
+      <span class="mini"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>100% Physically Audited Institutions</span>
+    </div>
+
+    <div class="filters">
+      <div class="pills">
+        <span class="on">All Districts</span><span>Chennai</span><span>Coimbatore</span><span>Madurai</span><span>Tiruppur</span><span>Salem</span><span>Tiruchirappalli</span><span>Erode</span><span>Vellore</span>
+      </div>
+      <div class="qf">
+        <b>Quick Filter:</b>
+        <span class="on">All Needs</span><span>Urgent Food Supplies</span><span>School Term Books</span><span>Medical Support</span><span>Infrastructure</span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="ocard">
+        <div class="top">
+          <div class="row">
+            <span class="loc"><svg width="10" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/></svg>Hadapsar, Pune District, Maharashtra</span>
+            <span class="ver">✓ MH/2012/00431</span>
+          </div>
+          <h3>Snehalaya Children's Home</h3>
+          <div class="kids"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg>48 Girls &amp; Boys (Ages 5–17)</div>
+        </div>
+        <div class="reqs">
+          <h5>Immediate Requirements</h5>
+          <ul><li>Rice &amp; Dal (Monthly Ration)</li><li>English Medium Textbooks (Std 6-9)</li><li>Bed Sheets &amp; Daily Towels</li></ul>
+        </div>
+        <div class="upi"><code><svg viewBox="0 0 24 24"><use href="#i-wallet"/></svg>UPI: snehalaya.care@sbi</code><button>Copy</button></div>
+        <div class="acts" style="padding-top:16px"><a class="btn dark" href="#">Donate via UPI</a><a class="btn light" href="#">Profile</a></div>
+      </article>
+      <article class="ocard">
+        <div class="top">
+          <div class="row">
+            <span class="loc"><svg width="10" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/></svg>Whitefield, Bengaluru, Karnataka</span>
+            <span class="ver">✓ KA/2015/01192</span>
+          </div>
+          <h3>Aashraya Bal Mandir</h3>
+          <div class="kids"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg>34 Children (Ages 4–15)</div>
+        </div>
+        <div class="reqs">
+          <h5>Immediate Requirements</h5>
+          <ul><li>Science Lab Exploration Kits</li><li>Winter Sweaters (30 units)</li><li>Milk Powder &amp; Nutritional Mix</li></ul>
+        </div>
+        <div class="upi"><code><svg viewBox="0 0 24 24"><use href="#i-wallet"/></svg>UPI: aashrayabal@icici</code><button>Copy</button></div>
+        <div class="acts" style="padding-top:16px"><a class="btn dark" href="#">Donate via UPI</a><a class="btn light" href="#">Profile</a></div>
+      </article>
+      <article class="ocard">
+        <div class="top">
+          <div class="row">
+            <span class="loc"><svg width="10" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/></svg>Sanganer, Jaipur District, Rajasthan</span>
+            <span class="ver">✓ RJ/2009/00812</span>
+          </div>
+          <h3>Prerna Vidya Ashram</h3>
+          <div class="kids"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg>52 Boys &amp; Girls (Ages 6–18)</div>
+        </div>
+        <div class="reqs">
+          <h5>Immediate Requirements</h5>
+          <ul><li>Computer Monitors (Refurbished)</li><li>Stationery Sets (50 packages)</li><li>Carrom boards &amp; Cricket sets</li></ul>
+        </div>
+        <div class="upi"><code><svg viewBox="0 0 24 24"><use href="#i-wallet"/></svg>UPI: prernavidya@hdfcbank</code><button>Copy</button></div>
+        <div class="acts" style="padding-top:16px"><a class="btn dark" href="#">Donate via UPI</a><a class="btn light" href="#">Profile</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REAL-TIME ESSENTIALS -->
+<section class="sec needs" id="needs">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow" style="text-align:left">Real-Time Essentials</span>
+      <h2>Current Verified Requests Across Homes</h2>
+      <p>Orphanage superintendents update their immediate inventory gaps weekly. You can sponsor items or send packages directly.</p>
+    </div>
+    <div class="ncards">
+      <article class="ncard">
+        <div class="hd"><span class="tag" style="background:var(--peach);color:var(--brown)">Education</span><span>Snehalaya (Pune)</span></div>
+        <h3>Annual School Supply &amp; Book Kits (45 Kits)</h3>
+        <p>Notebooks, geometry boxes, school bags, and water bottles for academic term readiness.</p>
+        <div class="prog"><div class="pl"><span>28 of 45 kits sponsored</span><b>62%</b></div><div class="bar"><i style="width:62%"></i></div><small>₹850 covers one complete child kit</small></div>
+        <a class="btn dark" href="#">Sponsor a Student's Kit (₹850)</a>
+      </article>
+      <article class="ncard">
+        <div class="hd"><span class="tag" style="background:var(--acc);color:var(--p)">Nutrition</span><span>Prerna Vidya (Jaipur)</span></div>
+        <h3>Monthly Grain &amp; Nutrition Ration (500 kg)</h3>
+        <p>Whole wheat atta, Toor dal, Jaggery, and fortified sunflower cooking oil for daily nourishment.</p>
+        <div class="prog"><div class="pl"><span>₹16,000 of ₹24,500 met</span><b>65%</b></div><div class="bar"><i style="width:65%"></i></div><small>Remaining: ₹8,500 for monthly supplies</small></div>
+        <a class="btn dark" href="#">Contribute to Ration (Any Amount)</a>
+      </article>
+      <article class="ncard">
+        <div class="hd"><span class="tag" style="background:var(--peach);color:var(--brown)">Health &amp; Warmth</span><span>Aashraya Bal (Bengaluru)</span></div>
+        <h3>Winter Thermal Wear &amp; Sweaters (34 Sets)</h3>
+        <p>High-grade woolen cardigans, thermal innerwear, and warm socks for morning study sessions.</p>
+        <div class="prog"><div class="pl"><span>12 of 34 sets fulfilled</span><b>35%</b></div><div class="bar"><i style="width:35%"></i></div><small>₹600 per complete warm clothing set</small></div>
+        <a class="btn dark" href="#">Fulfill Winter Clothing</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WAYS TO GIVE -->
+<section class="sec ways" id="ways">
+  <div class="wrap">
+    <div class="sh"><span class="eyebrow">Ways to Participate</span><h2>Four Meaningful Ways to Share Care</h2><p>Whether through direct financial aid, daily essentials, your professional craft, or weekend hours — your presence shapes lives.</p></div>
+    <div class="wgrid">
+      <div class="way">
+        <span class="ic"><svg viewBox="0 0 24 24" style="font-family:Inter;font-weight:700"><path d="M6 6h12M6 11h12M9 6c0 4 6 4 6 9l-3 4"/></svg></span>
+        <h3>Direct UPI &amp; Sponsorship</h3>
+        <p>Send funds directly to verified orphanage bank UPI accounts with zero platform commission. Receive 80G tax receipts directly from registered trusts.</p>
+        <div class="tiers" style="margin-top:auto"><small>Suggested Quick Tiers:</small><b>₹500</b><b>₹1,500</b><b>₹3,500</b></div>
+      </div>
+      <div class="way">
+        <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-box"/></svg></span>
+        <h3>Donate Physical Goods</h3>
+        <p>Ship dry grains, stationery, hygiene supplies, or educational toys directly via Amazon/Flipkart or local drop-offs.</p>
+        <a class="lnk foot" href="#">View delivery addresses <svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="way">
+        <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span>
+        <h3>Volunteer Your Time</h3>
+        <p>Teach spoken English, mentor in mathematics, conduct storytelling circles, or organize weekend sports activities.</p>
+        <a class="lnk foot" href="#">Apply as Weekend Mentor <svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="way">
+        <span class="ic"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>
+        <h3>Offer Professional Services</h3>
+        <p>Are you a doctor, dentist, counselor, lawyer, or electrician? Offer pro-bono health checkups, facility repairs, or advisory services.</p>
+        <a class="lnk foot" href="#">Register Skill Offering <svg viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec how" id="how">
+  <div class="wrap">
+    <div class="sh"><span class="eyebrow">Accountability First</span><h2>How Connect &amp; Care Works</h2><p>Radical transparency backed by physical ground audits and direct banking channels.</p></div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Browse Verified Homes</h3><p>Filter by location and inspect certified Society/Trust NGO registration certificates and active administrator contact details.</p></div>
+      <div class="step"><span class="n">2</span><h3>Choose How You Help</h3><p>Select an urgent real-time inventory gap, sponsor a student kit, deliver grains, or schedule a weekend mentoring workshop.</p></div>
+      <div class="step"><span class="n">3</span><h3>Direct Giving (0% Cut)</h3><p>Donate straight to the institution's official UPI ID with 100% direct accountability and verifiable district receipts.</p></div>
+    </div>
+    <div class="callout">
+      <div class="l">
+        <span class="ci"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-5 9 5v12M9 21v-6h6v6M8 12h.01M16 12h.01"/></svg></span>
+        <div>
+          <h4>Are you an orphanage superintendent or trust administrator?</h4>
+          <p>Register your childcare home in 10 minutes with our district coordinator team for physical auditing.</p>
+        </div>
+      </div>
+      <a class="btn dark" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener">Register Your Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+  <div class="wrapn">
+    <div class="sh"><span class="eyebrow">Common Queries</span><h2>Frequently Asked Questions</h2><p>Everything you need to know about transparency, volunteering, and giving with confidence.</p></div>
+    <details><summary>How do you verify the orphanages listed on the platform?</summary><p>Each listed home is checked against its government registration certificate, and our district coordinators conduct physical audits before a home is shown as verified.</p></details>
+    <details><summary>Does Connect &amp; Care take a commission or transaction fee on donations?</summary><p>No. Donations made through a home's UPI ID go straight to that institution's bank account, with zero platform commission.</p></details>
+    <details><summary>Can I visit the orphanage in person before contributing?</summary><p>Yes. Use the Profile button on any home to see its contact details and arrange a visit with the administrator.</p></details>
+    <details><summary>How do I get an 80G receipt for income tax exemption?</summary><p>Registered trusts issue 80G receipts directly for eligible donations. Look for the 80G mention on the home's profile before donating.</p></details>
+    <details><summary>How can I volunteer my weekend time or professional skills?</summary><p>Use the "Volunteer Your Time" or "Offer Professional Services" options above to register your interest. Our coordinators will match you with a nearby home.</p></details>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta">
+  <div class="ctabox">
+    <div>
+      <h2>Every Child Deserves A Caring Community</h2>
+      <p>Join thousands of everyday citizens making a direct, verifiable difference in their local districts across India.</p>
+    </div>
+    <div class="btns">
+      <a class="btn light" href="#discover">Find Nearby Orphanages Now</a>
+      <a class="btn ghost" href="#ways">Register As a Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="#"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#d0e7c0"/><path d="M16 24c-6 0-9-5-9-9 4 0 8 2 9 6 1-4 5-6 9-6 0 4-3 9-9 9z" fill="#164525"/></svg><b style="font-family:'Plus Jakarta Sans',sans-serif;color:var(--p);font-size:18px">Connect &amp; Care</b></a>
+        <p class="desc">An Indian social-impact network bridging conscientious patrons and grassroots childcare homes through direct UPI transfers, physically audited district verifications, and radical transparency.</p>
+        <div class="ct">
+          <span>✉ support@connectandcare.org</span>
+          <span>☎ +91 (080) 4122-8900</span>
+          <span>📍 Bengaluru, Karnataka • All-India Chapters</span>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li>Find Orphanages</li><li>Current Urgent Needs</li><li>Volunteer Roles</li><li>Register a Home</li><li>District Coordinator Network</li></ul>
+      </div>
+      <div>
+        <h4>Trust &amp; Transparency</h4>
+        <ul><li>Verification Process &amp; Audits</li><li>Home-direct UPI Details</li><li>Tax Benefits 80G Guide</li><li>Impact Ethics &amp; Child Safeguarding</li><li>Annual Financial Disclosures</li></ul>
+      </div>
+      <div>
+        <h4>Stay Connected</h4>
+        <div id="signupForm" class="form">
+          <p class="sub">Join our community of caring citizens. Receive verified field reports and critical district supply requests.</p>
+          <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email" required>
+          <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" required>
+          <button type="button" id="submitBtn">Join</button>
+          <div id="msg" class="msg" role="status" aria-live="polite"></div>
+          <p class="fine">Zero spam. Only actionable district alerts.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <div>
+        <p>© 2025 Connect &amp; Care Foundation. Registered Social Impact Initiative (Sec 8 / 80G Compliant).</p>
+        <p>100% direct giving guarantee: UPI payments route straight to registered institution bank accounts with zero middleman deductions.</p>
+      </div>
+      <nav><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Contact</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="authModal" aria-hidden="true">
+  <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button type="button" class="mclose" id="authClose" aria-label="Close">&times;</button>
+    <div class="mbrand">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#d0e7c0"/><path d="M16 24c-6 0-9-5-9-9 4 0 8 2 9 6 1-4 5-6 9-6 0 4-3 9-9 9z" fill="#164525"/></svg>
+      <b>Connect &amp; Care</b>
+    </div>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="msub" id="authSub">Sign in to access verified homes in your Tamil Nadu district.</p>
+    <div class="tabs">
+      <button type="button" id="tabSignin" class="on">Sign In</button>
+      <button type="button" id="tabSignup">Create Account</button>
+    </div>
+    <div class="af hide" id="aNameField"><label for="aName">Full name</label><input class="ai" type="text" id="aName" placeholder="Your full name" autocomplete="name"></div>
+    <div class="af"><label for="aEmail">Email address</label><input class="ai" type="email" id="aEmail" placeholder="you@example.com" autocomplete="email"></div>
+    <div class="af"><label for="aPass">Password</label>
+      <div class="apw"><input class="ai" type="password" id="aPass" placeholder="At least 8 characters" autocomplete="current-password"><button type="button" id="aToggle">Show</button></div>
+    </div>
+    <div class="af"><label for="aDist">Your district (Tamil Nadu)</label><select class="ai" id="aDist"><option value="">Select your district</option></select></div>
+    <button type="button" class="abtn" id="aSubmit">Sign In</button>
+    <div class="amsg" id="aMsg" role="status" aria-live="polite"></div>
+    <p class="anote">Access is limited to Tamil Nadu districts. Your district determines which verified homes and needs you can see.</p>
+  </div>
+</div>
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFPvXA_ECYvrhXuRGoMpgC1ukPoFCrKxY-b3DVunzAOfEyw3-LI5yJ4UiYoK-EWSG68g/exec";
+
+  const form = document.getElementById("signupForm");
+  const btn = document.getElementById("submitBtn");
+  const msg = document.getElementById("msg");
+
+  function showSuccess() {
+    msg.className = "msg ok";
+    msg.textContent = "Thank you! You're now on the list.";
+    ["name", "email", "phone"].forEach(function (id) { document.getElementById(id).value = ""; });
+    btn.disabled = false;
+    btn.textContent = "Join";
+  }
+
+  function showError() {
+    msg.className = "msg err";
+    msg.textContent = "Something went wrong. Please try again.";
+    btn.disabled = false;
+    btn.textContent = "Join";
+  }
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!name || !email || !phone) {
+      msg.className = "msg err";
+      msg.textContent = "Please fill in name, email and phone.";
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.className = "msg err";
+      msg.textContent = "Please enter a valid email address.";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    msg.textContent = "";
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+
+  const TN_DISTRICTS = [
+    "Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode",
+    "Kallakurichi","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai",
+    "Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem",
+    "Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur",
+    "Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"
+  ];
+  const authModal = document.getElementById("authModal");
+  const aName = document.getElementById("aName"), aEmail = document.getElementById("aEmail");
+  const aPass = document.getElementById("aPass"), aDist = document.getElementById("aDist");
+  const aMsg = document.getElementById("aMsg"), aSubmit = document.getElementById("aSubmit");
+  const signinLink = document.getElementById("signin");
+  let aMode = "signin";
+  let currentUser = null;
+
+  TN_DISTRICTS.forEach(function (d) {
+    const o = document.createElement("option");
+    o.value = d; o.textContent = d;
+    aDist.appendChild(o);
+  });
+
+  function openAuth() {
+    authModal.classList.add("open");
+    authModal.setAttribute("aria-hidden", "false");
+    setTimeout(function () { aEmail.focus(); }, 50);
+  }
+  function closeAuth() {
+    authModal.classList.remove("open");
+    authModal.setAttribute("aria-hidden", "true");
+    if (location.hash === "#login") history.replaceState(null, "", location.pathname + location.search);
+  }
+  function setAuthMode(m) {
+    aMode = m;
+    const up = m === "signup";
+    document.getElementById("tabSignin").classList.toggle("on", !up);
+    document.getElementById("tabSignup").classList.toggle("on", up);
+    document.getElementById("aNameField").classList.toggle("hide", !up);
+    document.getElementById("authTitle").textContent = up ? "Create your account" : "Welcome back";
+    document.getElementById("authSub").textContent = up
+      ? "Register with your district so you can see verified homes near you."
+      : "Sign in to access verified homes in your Tamil Nadu district.";
+    aPass.autocomplete = up ? "new-password" : "current-password";
+    aSubmit.textContent = up ? "Create Account" : "Sign In";
+    showAuthMsg("", "");
+  }
+  function showAuthMsg(text, type) {
+    aMsg.className = "amsg " + (type || "");
+    aMsg.textContent = text;
+  }
+  function markBad(el, bad) { el.classList.toggle("bad", !!bad); }
+
+  function validateAuth() {
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(aEmail.value.trim());
+    const distOk = TN_DISTRICTS.includes(aDist.value);
+    markBad(aEmail, !emailOk);
+    markBad(aPass, aPass.value.length < 8);
+    markBad(aDist, !distOk);
+    if (aMode === "signup") markBad(aName, !aName.value.trim());
+    if (aMode === "signup" && !aName.value.trim()) { showAuthMsg("Please enter your full name.", "err"); return false; }
+    if (!emailOk) { showAuthMsg("Please enter a valid email address.", "err"); return false; }
+    if (aPass.value.length < 8) { showAuthMsg("Password must be at least 8 characters.", "err"); return false; }
+    if (!distOk) { showAuthMsg("Please select a Tamil Nadu district.", "err"); return false; }
+    return true;
+  }
+
+  function callApi(payload) {
+    return fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        try { return JSON.parse(t); }
+        catch (e) { throw new Error("Server did not return JSON (HTTP " + r.status + "). Check the deployment's access is set to Anyone."); }
+      });
+    });
+  }
+
+  function onSignedIn(user) {
+    currentUser = user;
+    signinLink.textContent = "Signed in · " + user.district;
+    signinLink.href = "#";
+    document.querySelectorAll(".pills span").forEach(function (s) {
+      s.classList.toggle("on", s.textContent === user.district);
+    });
+    closeAuth();
+  }
+
+  function signOut() {
+    currentUser = null;
+    signinLink.textContent = "Sign In";
+    signinLink.href = "#login";
+    document.querySelectorAll(".pills span").forEach(function (s, i) { s.classList.toggle("on", i === 0); });
+  }
+
+  document.querySelectorAll('a[href="#login"]').forEach(function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); openAuth(); });
+  });
+  signinLink.addEventListener("click", function (e) {
+    if (currentUser) { e.preventDefault(); signOut(); }
+  });
+  document.getElementById("authClose").addEventListener("click", closeAuth);
+  authModal.addEventListener("click", function (e) { if (e.target === authModal) closeAuth(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAuth(); });
+  document.getElementById("tabSignin").addEventListener("click", function () { setAuthMode("signin"); });
+  document.getElementById("tabSignup").addEventListener("click", function () { setAuthMode("signup"); });
+  document.getElementById("aToggle").addEventListener("click", function () {
+    const show = aPass.type === "password";
+    aPass.type = show ? "text" : "password";
+    this.textContent = show ? "Hide" : "Show";
+  });
+  [aName, aEmail, aPass, aDist].forEach(function (el) {
+    el.addEventListener("input", function () { markBad(el, false); });
+    el.addEventListener("change", function () { markBad(el, false); });
+  });
+  aPass.addEventListener("keydown", function (e) { if (e.key === "Enter") aSubmit.click(); });
+
+  aSubmit.addEventListener("click", function () {
+    if (!validateAuth()) return;
+    const payload = {
+      action: aMode === "signup" ? "register" : "login",
+      email: aEmail.value.trim(),
+      password: aPass.value,
+      district: aDist.value
+    };
+    if (aMode === "signup") payload.name = aName.value.trim();
+
+    const original = aSubmit.textContent;
+    aSubmit.disabled = true;
+    aSubmit.textContent = aMode === "signup" ? "Creating account..." : "Signing in...";
+    showAuthMsg("", "");
+
+    callApi(payload)
+      .then(function (res) {
+        if (res && res.success) {
+          showAuthMsg(aMode === "signup" ? "Account created. Welcome!" : "Signed in.", "ok");
+          setTimeout(function () { onSignedIn(res); aSubmit.disabled = false; aSubmit.textContent = original; aPass.value = ""; }, 400);
+        } else {
+          showAuthMsg((res && res.error) || "Something went wrong. Please try again.", "err");
+          aSubmit.disabled = false; aSubmit.textContent = original;
+        }
+      })
+      .catch(function (err) {
+        console.error("Sign-in request failed:", err);
+        const reason = (err && err.message && err.message.indexOf("JSON") > -1) ? err.message
+          : "The request was blocked before reaching the server. If you are viewing this in a preview, open index.html directly in your browser.";
+        showAuthMsg(reason, "err");
+        aSubmit.disabled = false; aSubmit.textContent = original;
+      });
+  });
+
+  if (location.hash === "#login") openAuth();
+
+  document.querySelectorAll(".upi button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      const text = b.parentElement.querySelector("code").textContent.replace("UPI: ", "").trim();
+      try {
+        navigator.clipboard.writeText(text);
+        b.textContent = "Copied";
+        setTimeout(function () { b.textContent = "Copy"; }, 1500);
+      } catch (err) {
+        b.textContent = "Copy";
+      }
+    });
+  });
+</script>
+</body>
+</html>
